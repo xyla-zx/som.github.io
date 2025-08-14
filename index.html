@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* ส่วนของ Header และ Navigation */
+      .header-top {
+        background-color: #ff6600;
+        color: #fff;
+        padding: 10px 0;
+      }
+      .navbar-custom {
+        background-color: #333;
+        padding: 15px 0;
+      }
+      .navbar-custom .navbar-nav .nav-link {
+        color: #fff !important;
+        margin: 0 15px;
+        font-weight: 500;
+      }
+      .navbar-custom .navbar-nav .nav-link:hover {
+        color: #ff6600 !important;
+      }
+
+      /* ส่วนของ Carousel - แสดงข้อมูลสำคัญและรูปภาพหลัก */
+      .carousel-item {
+        height: 300px;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        position: relative;
+      }
+      .carousel-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #fff;
+        z-index: 2;
+        width: 90%;
+        max-width: 1100px;
+      }
+      .ranking-badge {
+        font-size: 4rem;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        line-height: 1;
+      }
+
+      /* ส่วนของ Tab Navigation - เมนูหมวดหมู่ข้อมูล */
+      .tab-section {
+        background-color: #f8f9fa;
+        padding: 40px 0;
+      }
+      .nav-tabs-custom {
+        border-bottom: 3px solid #ff6600;
+        margin-bottom: 30px;
+      }
+      .nav-tabs-custom .nav-link {
+        border: none;
+        color: #666;
+        font-weight: 600;
+        padding: 15px 30px;
+        margin-right: 10px;
+      }
+      .nav-tabs-custom .nav-link.active {
+        background-color: #ff6600;
+        color: #fff;
+        border-radius: 5px 5px 0 0;
+      }
+
+      /* ส่วนของ Cards - แสดงข้อมูลรายละเอียดในแต่ละหมวดหมู่ */
+      .card-custom {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        height: 100%;
+        margin-bottom: 20px;
+      }
+      .card-custom:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      }
+      .card-img-top {
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px 10px 0 0;
+      }
+      .card-date {
+        color: #999;
+        font-size: 0.9rem;
+      }
+
+      /* ส่วนของ Footer */
+      .footer {
+        background-color: #333;
+        color: #fff;
+        padding: 40px 0;
+        margin-top: 50px;
+      }
+      .footer h5 {
+        color: #ff6600;
+        margin-bottom: 20px;
+      }
+      .footer a {
+        color: #ccc;
+        text-decoration: none;
+      }
+      .footer a:hover {
+        color: #ff6600;
+      }
+
+      /* ปรับแต่งสำหรับมือถือ */
+      @media (max-width: 575.98px) {
+        .ranking-badge {
+          font-size: 3rem;
+        }
+        .carousel-item {
+          height: 420px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section - ส่วนหัวเว็บไซต์ที่มีโลโก้และข้อมูลมหาวิทยาลัย -->
+    <div class="header-top">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="d-flex align-items-center">
+              <img
+                src="/img/kmutnb_index_Logo.png"
+                alt="KMUTNB Logo"
+                class="me-3"
+              />
+              <div>
+                <h5 class="mb-0">มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ</h5>
+                <small
+                  >KING MONGKUT'S UNIVERSITY OF TECHNOLOGY NORTH BANGKOK</small
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 text-end">
+            <div class="d-flex justify-content-end align-items-center gap-3">
+              <a href="#" class="text-white"
+                ><i class="fas fa-user me-1"></i> นักศึกษา</a
+              >
+              <a href="#" class="text-white"
+                ><i class="fas fa-graduation-cap me-1"></i> คณาจารย์</a
+              >
+              <a href="#" class="text-white"
+                ><i class="fas fa-search me-1"></i> ค้นหา</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Bar - เมนูหลักของเว็บไซต์ -->
+    <nav
+      class="navbar navbar-expand-lg navbar-custom navbar-dark"
+      aria-label="เมนูหลัก"
+    >
+      <div class="container">
+        <a class="navbar-brand text-white fw-semibold d-lg-none" href="#"
+          >KMUTNB</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="สลับเมนูนำทาง"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="#">หน้าแรก</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">เกี่ยวกับ KMUTNB</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">หน่วยงานและองค์กร</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">รับสมัครนักศึกษา</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">วิจัยและบริการวิชาการ</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">ติดต่อ</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Carousel Section - แสดงข้อมูลไฮไลท์และความสำเร็จของมหาวิทยาลัย -->
+    <div
+      id="heroCarousel"
+      class="carousel slide"
+      data-bs-ride="carousel"
+      data-bs-interval="4000"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="สไลด์ 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="1"
+          aria-label="สไลด์ 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="2"
+          aria-label="สไลด์ 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <img src="/img/b1.jpg" class="d-block w-100" alt="Banner 1" />
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <img src="/img/b2.jpg" class="d-block w-100" alt="Banner 2" />
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <img src="/img/b3.jpg" class="d-block w-100" alt="Banner 3" />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="prev"
+        aria-label="ก่อนหน้า"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="next"
+        aria-label="ถัดไป"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <!-- Tab Section - ส่วนแสดงข้อมูลแยกตามหมวดหมู่ต่างๆ -->
+    <div class="tab-section">
+      <div class="container">
+        <!-- Tab Navigation - เมนูเลือกหมวดหมู่ข้อมูล -->
+        <ul
+          class="nav nav-tabs nav-tabs-custom"
+          id="contentTabs"
+          role="tablist"
+        >
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="news-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#news"
+              type="button"
+              role="tab"
+              aria-controls="news"
+              aria-selected="true"
+            >
+              <i class="fas fa-newspaper me-2"></i>ข่าวประชาสัมพันธ์
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="announcements-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#announcements"
+              type="button"
+              role="tab"
+              aria-controls="announcements"
+              aria-selected="false"
+            >
+              <i class="fas fa-bullhorn me-2"></i>ประกาศ/ข้อมูล
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="admissions-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#admissions"
+              type="button"
+              role="tab"
+              aria-controls="admissions"
+              aria-selected="false"
+            >
+              <i class="fas fa-user-graduate me-2"></i>ข้อมูลนักศึกษา
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="research-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#research"
+              type="button"
+              role="tab"
+              aria-controls="research"
+              aria-selected="false"
+            >
+              <i class="fas fa-flask me-2"></i>ข้อมูลงานวิจัย
+            </button>
+          </li>
+        </ul>
+
+        <!-- Tab Content - เนื้อหาของแต่ละหมวดหมู่ -->
+        <div class="tab-content" id="contentTabsContent">
+          <!-- News Tab - แสดงข่าวสารและประชาสัมพันธ์ -->
+          <div
+            class="tab-pane fade show active"
+            id="news"
+            role="tabpanel"
+            aria-labelledby="news-tab"
+          >
+            <!-- แถวที่ 1 -->
+            <div class="row mb-4">
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img
+                    src="/img/program-TCAS69.jpg"
+                    class="card-img-top"
+                    alt="TCAS News"
+                  />
+                  <div class="card-body">
+                    <h6 class="card-title">
+                      การรับสมัครนักศึกษา ระบบ TCAS รอบที่ 1 ปีการศึกษา 2569
+                    </h6>
+                    <p class="card-text">
+                      ประชาสัมพันธ์การรับสมัครนักศึกษาใหม่ ปีการศึกษา 2569 ระบบ
+                      TCAS
+                    </p>
+                    <small class="card-date text-muted">06/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img
+                    src="/img/2.jpg"
+                    class="card-img-top"
+                    alt="Academic News"
+                  />
+                  <div class="card-body">
+                    <h6 class="card-title">กำหนดการสมัครเรียน ประจำปี 2568</h6>
+                    <p class="card-text">
+                      กำหนดการสมัครเรียนและการรับสมัครนักศึกษาใหม่
+                      ประจำปีการศึกษา 2568
+                    </p>
+                    <small class="card-date text-muted">01/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img
+                    src="/img/3.png"
+                    class="card-img-top"
+                    alt="Student Service"
+                  />
+                  <div class="card-body">
+                    <h6 class="card-title">บริการนักศึกษาและสวัสดิการ</h6>
+                    <p class="card-text">
+                      บริการด้านการศึกษาและสวัสดิการนักศึกษา ประจำปี 2567-2568
+                    </p>
+                    <small class="card-date text-muted">10/07/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img
+                    src="/img/4.jpg"
+                    class="card-img-top"
+                    alt="Registration"
+                  />
+                  <div class="card-body">
+                    <h6 class="card-title">การรับสมัครและการลงทะเบียน</h6>
+                    <p class="card-text">
+                      ขั้นตอนการรับสมัครและการลงทะเบียนเรียน ระบบออนไลน์
+                    </p>
+                    <small class="card-date text-muted">08/07/2568</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- แถวที่ 2 -->
+            <div class="row">
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/5.png" class="card-img-top" alt="Event News" />
+                  <div class="card-body">
+                    <h6 class="card-title">กิจกรรมพิเศษประจำเดือน</h6>
+                    <p class="card-text">
+                      กิจกรรมสำคัญและงานพิเศษต่างๆ ประจำเดือนสิงหาคม
+                    </p>
+                    <small class="card-date text-muted">05/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/6.jpg" class="card-img-top" alt="Workshop" />
+                  <div class="card-body">
+                    <h6 class="card-title">อบรมเชิงปฏิบัติการ</h6>
+                    <p class="card-text">การอบรมพัฒนาทักษะและความรู้เฉพาะทาง</p>
+                    <small class="card-date text-muted">03/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img
+                    src="/img/7.jpg"
+                    class="card-img-top"
+                    alt="Scholarship"
+                  />
+                  <div class="card-body">
+                    <h6 class="card-title">ทุนการศึกษา</h6>
+                    <p class="card-text">
+                      ข้อมูลทุนการศึกษาและการสมัครขอรับทุน
+                    </p>
+                    <small class="card-date text-muted">01/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Technology" />
+                  <div class="card-body">
+                    <h6 class="card-title">นวัตกรรมเทคโนโลยี</h6>
+                    <p class="card-text">ผลงานวิจัยและนวัตกรรมด้านเทคโนโลยี</p>
+                    <small class="card-date text-muted">30/07/2568</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Announcements Tab - แสดงประกาศและข้อมูลสำคัญ -->
+          <div
+            class="tab-pane fade"
+            id="announcements"
+            role="tabpanel"
+            aria-labelledby="announcements-tab"
+          >
+            <!-- แถวที่ 1 -->
+            <div class="row mb-4">
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Official" />
+                  <div class="card-body">
+                    <h6 class="card-title">ประกาศราชการ</h6>
+                    <p class="card-text">ประกาศและข้อมูลสำคัญจากทางราชการ</p>
+                    <small class="card-date text-muted">10/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Policy" />
+                  <div class="card-body">
+                    <h6 class="card-title">นโยบายและระเบียบ</h6>
+                    <p class="card-text">นโยบายใหม่และระเบียบปฏิบัติ</p>
+                    <small class="card-date text-muted">08/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Schedule" />
+                  <div class="card-body">
+                    <h6 class="card-title">ตารางเวลาสำคัญ</h6>
+                    <p class="card-text">กำหนดการและตารางเวลาต่างๆ</p>
+                    <small class="card-date text-muted">07/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Regulation" />
+                  <div class="card-body">
+                    <h6 class="card-title">ข้อบังคับใหม่</h6>
+                    <p class="card-text">ข้อบังคับและกฎระเบียบล่าสุด</p>
+                    <small class="card-date text-muted">05/08/2568</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- แถวที่ 2 -->
+            <div class="row">
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Meeting" />
+                  <div class="card-body">
+                    <h6 class="card-title">การประชุมสำคัญ</h6>
+                    <p class="card-text">ประกาศการประชุมและการจัดงานสำคัญ</p>
+                    <small class="card-date text-muted">04/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img
+                    src="/img/8.jpg"
+                    class="card-img-top"
+                    alt="Maintenance"
+                  />
+                  <div class="card-body">
+                    <h6 class="card-title">บำรุงรักษาระบบ</h6>
+                    <p class="card-text">การบำรุงรักษาและปรับปรุงระบบ</p>
+                    <small class="card-date text-muted">03/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Update" />
+                  <div class="card-body">
+                    <h6 class="card-title">อัปเดตข้อมูล</h6>
+                    <p class="card-text">การอัปเดตข้อมูลและระบบใหม่</p>
+                    <small class="card-date text-muted">02/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Emergency" />
+                  <div class="card-body">
+                    <h6 class="card-title">ประกาศเร่งด่วน</h6>
+                    <p class="card-text">ประกาศเร่งด่วนและข้อมูลสำคัญ</p>
+                    <small class="card-date text-muted">01/08/2568</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Student/Admissions Tab - แสดงข้อมูลเกี่ยวกับนักศึกษา -->
+          <div
+            class="tab-pane fade"
+            id="admissions"
+            role="tabpanel"
+            aria-labelledby="admissions-tab"
+          >
+            <!-- แถวที่ 1 -->
+            <div class="row mb-4">
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img
+                    src="/img/8.jpg"
+                    class="card-img-top"
+                    alt="Application"
+                  />
+                  <div class="card-body">
+                    <h6 class="card-title">วิธีการสมัคร</h6>
+                    <p class="card-text">ขั้นตอนและวิธีการสมัครเข้าศึกษา</p>
+                    <small class="card-date text-muted">12/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Faculty" />
+                  <div class="card-body">
+                    <h6 class="card-title">คณะและสาขา</h6>
+                    <p class="card-text">ข้อมูลคณะและสาขาวิชาต่างๆ</p>
+                    <small class="card-date text-muted">11/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img
+                    src="/img/8.jpg"
+                    class="card-img-top"
+                    alt="Scholarship"
+                  />
+                  <div class="card-body">
+                    <h6 class="card-title">ทุนการศึกษา</h6>
+                    <p class="card-text">ประเภททุนและเงื่อนไขการขอทุน</p>
+                    <small class="card-date text-muted">10/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Fees" />
+                  <div class="card-body">
+                    <h6 class="card-title">ค่าเล่าเรียนและค่าธรรมเนียม</h6>
+                    <p class="card-text">
+                      อัตราค่าเล่าเรียน ค่าลงทะเบียน และวิธีชำระเงิน
+                    </p>
+                    <small class="card-date text-muted">09/08/2568</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- แถวที่ 2 -->
+            <div class="row">
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Dormitory" />
+                  <div class="card-body">
+                    <h6 class="card-title">หอพักนักศึกษา</h6>
+                    <p class="card-text">
+                      ข้อมูลหอพักภายในและภายนอกมหาวิทยาลัย
+                    </p>
+                    <small class="card-date text-muted">08/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Calendar" />
+                  <div class="card-body">
+                    <h6 class="card-title">ปฏิทินการศึกษา</h6>
+                    <p class="card-text">
+                      กำหนดการเปิดภาคเรียน วันลงทะเบียน และวันสำคัญ
+                    </p>
+                    <small class="card-date text-muted">07/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Clubs" />
+                  <div class="card-body">
+                    <h6 class="card-title">ชมรมและกิจกรรมนักศึกษา</h6>
+                    <p class="card-text">
+                      ข้อมูลชมรม งานกีฬา และกิจกรรมเสริมหลักสูตร
+                    </p>
+                    <small class="card-date text-muted">06/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Support" />
+                  <div class="card-body">
+                    <h6 class="card-title">บริการสนับสนุนนักศึกษา</h6>
+                    <p class="card-text">
+                      แนะแนวอาชีพ ทุนฉุกเฉิน สุขภาพและสุขภาวะ
+                    </p>
+                    <small class="card-date text-muted">05/08/2568</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Research Tab - ข้อมูลงานวิจัย -->
+          <div
+            class="tab-pane fade"
+            id="research"
+            role="tabpanel"
+            aria-labelledby="research-tab"
+          >
+            <!-- แถวที่ 1 -->
+            <div class="row mb-4">
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img
+                    src="/img/8.jpg"
+                    class="card-img-top"
+                    alt="Research Center"
+                  />
+                  <div class="card-body">
+                    <h6 class="card-title">ศูนย์วิจัยและนวัตกรรม</h6>
+                    <p class="card-text">
+                      รวมศูนย์วิจัยเฉพาะด้านและความร่วมมือภาคอุตสาหกรรม
+                    </p>
+                    <small class="card-date text-muted">12/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Project" />
+                  <div class="card-body">
+                    <h6 class="card-title">โครงการวิจัยเด่น</h6>
+                    <p class="card-text">
+                      ผลงานวิจัยที่ได้รับทุนและสิทธิบัตรสำคัญ
+                    </p>
+                    <small class="card-date text-muted">10/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img
+                    src="/img/8.jpg"
+                    class="card-img-top"
+                    alt="Publication"
+                  />
+                  <div class="card-body">
+                    <h6 class="card-title">วารสารและสิ่งพิมพ์</h6>
+                    <p class="card-text">
+                      เผยแพร่ผลงานวิจัยในฐานข้อมูลนานาชาติ
+                    </p>
+                    <small class="card-date text-muted">08/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Grant" />
+                  <div class="card-body">
+                    <h6 class="card-title">ทุนวิจัยและการสนับสนุน</h6>
+                    <p class="card-text">
+                      ข้อมูลแหล่งทุนและการขอรับการสนับสนุนงานวิจัย
+                    </p>
+                    <small class="card-date text-muted">06/08/2568</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- แถวที่ 2 -->
+            <div class="row">
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img
+                    src="/img/8.jpg"
+                    class="card-img-top"
+                    alt="Intellectual Property"
+                  />
+                  <div class="card-body">
+                    <h6 class="card-title">ทรัพย์สินทางปัญญา</h6>
+                    <p class="card-text">
+                      การจดสิทธิบัตร ลิขสิทธิ์ และการถ่ายทอดเทคโนโลยี
+                    </p>
+                    <small class="card-date text-muted">05/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Laboratory" />
+                  <div class="card-body">
+                    <h6 class="card-title">ห้องปฏิบัติการมาตรฐาน</h6>
+                    <p class="card-text">
+                      เครื่องมือวิจัยมาตรฐานและการให้บริการทดสอบ
+                    </p>
+                    <small class="card-date text-muted">04/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img
+                    src="/img/8.jpg"
+                    class="card-img-top"
+                    alt="Collaboration"
+                  />
+                  <div class="card-body">
+                    <h6 class="card-title">ความร่วมมือวิจัย</h6>
+                    <p class="card-text">
+                      ความร่วมมือกับมหาวิทยาลัยและองค์กรต่างประเทศ
+                    </p>
+                    <small class="card-date text-muted">03/08/2568</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card card-custom h-100">
+                  <img src="/img/8.jpg" class="card-img-top" alt="Awards" />
+                  <div class="card-body">
+                    <h6 class="card-title">รางวัลและความภาคภูมิใจ</h6>
+                    <p class="card-text">
+                      ผลงานและเกียรติคุณของคณาจารย์และนักศึกษา
+                    </p>
+                    <small class="card-date text-muted">01/08/2568</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer - ข้อมูลติดต่อและลิงก์สำคัญ -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <h5>ติดต่อเรา</h5>
+            <p class="mb-1">มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ</p>
+            <p class="mb-1">
+              1518 ถนนประชาราษฎร์ 1 แขวงวงศ์สว่าง เขตบางซื่อ กรุงเทพฯ 10800
+            </p>
+            <p class="mb-1">โทร: 0 2555 2000</p>
+            <p class="mb-0">อีเมล: info@kmutnb.ac.th</p>
+          </div>
+          <div class="col-md-4 mb-4">
+            <h5>ลิงก์ด่วน</h5>
+            <ul class="list-unstyled mb-0">
+              <li><a href="#">ปฏิทินการศึกษา</a></li>
+              <li><a href="#">คู่มือนักศึกษา</a></li>
+              <li><a href="#">ทุนการศึกษา</a></li>
+              <li><a href="#">ติดต่อหน่วยงาน</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 mb-4">
+            <h5>ติดตามเรา</h5>
+            <div class="d-flex gap-3 fs-4">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-square"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-x-twitter"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="text-center pt-3 border-top border-secondary">
+          <small>© <span id="year"></span> KMUTNB. สงวนลิขสิทธิ์</small>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // ตั้งค่าปีปัจจุบันที่ท้ายหน้า
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
